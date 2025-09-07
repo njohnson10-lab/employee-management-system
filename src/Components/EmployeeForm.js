@@ -1,16 +1,12 @@
-// import the necessary libraries
+// src/Components/EmployeeForm.js
 import React, { useState } from 'react';
 import '../Content/employee.css';
 
-// define the function
-function EmployeeForm(props) {
-  
-    // define the varibales and setter functions, and set them to the default state
-    const [name, setName] = useState('');
+function EmployeeForm({ onSubmit }) {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  // define a submit function
   const handleSubmit = (e) => {
     e.preventDefault();
     const employee = {
@@ -19,16 +15,13 @@ function EmployeeForm(props) {
       email,
       phone,
     };
-    props.onSubmit(employee);
+    onSubmit(employee);
     setName('');
     setEmail('');
     setPhone('');
   };
 
-
-  // Render the HTML
   return (
-    // define the form
     <form className="employee-form" onSubmit={handleSubmit}>
       <h2>Add Employee</h2>
       <div>
@@ -63,5 +56,4 @@ function EmployeeForm(props) {
   );
 }
 
-// allow the Component to be called from elsewhere
 export default EmployeeForm;
