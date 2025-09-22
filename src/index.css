@@ -11,3 +11,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.employee-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s;
+}
+
+.employee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.employee-link {
+  color: #0066cc;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+}
+
+.employee-link:hover {
+  text-decoration: underline;
+}
