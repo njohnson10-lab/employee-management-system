@@ -1,20 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Content/employee.css';
 
-// A functional component for displaying a list of employees
-function EmployeeList(props) {
-  // Render the employee list
+function EmployeeList({ employees }) {
+  if (!employees || employees.length === 0) {
+    return <div className="no-employees">No employees found. Add one above!</div>;
+  }
+
   return (
     <div className="employee-list">
-      <h1>Employee List</h1>
-      <ul>
-        {props.employees.map((employee) => (
-          <li key={employee.EmployeeId}>
-            {/* Create a link to the employee detail page */}
-            <Link to={`/employees/${employee.EmployeeId}`}>
+      <h1>Employee Directory</h1>
+      <ul className="employee-grid">
+        {employees.map((employee) => (
+          <li key={employee.id} className="employee-card">
+            <Link to={`/employees/${employee.id}`} className="employee-link">
               {employee.name}
             </Link>
+            <p className="employee-email">{employee.email}</p>
           </li>
         ))}
       </ul>

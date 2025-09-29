@@ -1,34 +1,25 @@
-// import the necessary libraries
 import React, { useState } from 'react';
-import '../Content/employee.css';
 
-// define the function
-function EmployeeForm(props) {
-  
-    // define the varibales and setter functions, and set them to the default state
-    const [name, setName] = useState('');
+function EmployeeForm({ onSubmit }) {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  // define a submit function
   const handleSubmit = (e) => {
     e.preventDefault();
     const employee = {
-      EmployeeId: Math.floor(Math.random() * 10000),
+      id: Date.now(), // Use same ID pattern as App.js
       name,
       email,
-      phone,
+      phone
     };
-    props.onSubmit(employee);
+    onSubmit(employee);
     setName('');
     setEmail('');
     setPhone('');
   };
 
-
-  // Render the HTML
   return (
-    // define the form
     <form className="employee-form" onSubmit={handleSubmit}>
       <h2>Add Employee</h2>
       <div>
@@ -38,6 +29,7 @@ function EmployeeForm(props) {
           id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -47,6 +39,7 @@ function EmployeeForm(props) {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
       </div>
       <div>
@@ -56,12 +49,12 @@ function EmployeeForm(props) {
           id="phone"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
+          required
         />
       </div>
-      <button type="submit">Add</button>
+      <button type="submit">Add Employee</button>
     </form>
   );
 }
 
-// allow the Component to be called from elsewhere
 export default EmployeeForm;
